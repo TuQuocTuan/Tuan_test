@@ -1,47 +1,16 @@
-import { useState, useEffect } from "react";
+import UserList from "./components/phan2";
+import Blog from "./components/phan3";
 
 function App() {
-  const [posts, setPosts] = useState([]);
-  const [limit, setLimit] = useState(10);
-
-  useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-    if (apiUrl) {
-      fetch(apiUrl)
-        .then((res) => res.json())
-        .then((data) => setPosts(data))
-        .catch((err) => console.error("Lỗi khi fetch: ", err));
-    }
-  },[]);
-
-  const handleLoadmore = () => {
-    setLimit(limit + 10);
-  };
-
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>My Blog Posts</h1>
-      <hr />
+    <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <h1 style={{ textAlign: 'center' }}>Project Tổng Hợp - Tuan</h1>
+      
+      <UserList />
 
-      {posts.slice(0, limit).map((post, index) => (
-        <div key={post.id} style={{ marginBottom: '15px' }}>
-          <h3>{index + 1}. {post.title}</h3>
-          <p>{post.body}</p>
-        </div>
-      ))}
+      <hr style={{ margin: '50px 0' }} />
 
-      {limit < posts.length && (
-        <button
-          onClick={handleLoadmore}
-          style={{ marginTop: '20px', padding: '10px 20px', cursor: 'pointer' }}
-        >
-          Load More (Hiện thêm 10 bài)
-        </button>
-      )}
-
-      {limit >= posts.length && posts.length > 0 && (
-        <p style={{ color: 'gray' }}>Bạn đã xem hết tất cả bài viết!</p>
-      )}
+      <Blog />
     </div>
   );
 }
