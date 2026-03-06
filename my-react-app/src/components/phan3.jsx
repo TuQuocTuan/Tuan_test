@@ -15,9 +15,8 @@ function UserList() {
     u.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Style chung cho các ô (để không phải viết lại nhiều lần)
   const cellStyle = {
-    border: "1px solid #ddd", // Đường kẻ màu xám nhạt
+    border: "1px solid #ddd", 
     padding: "10px",
     textAlign: "left"
   };
@@ -31,11 +30,11 @@ function UserList() {
         style={{ padding: '8px', marginBottom: '15px', width: '250px' }}
       />
 
-      <div style={{ overflowX: "auto" }}> {/* Giúp bảng không bị vỡ trên mobile */}
+      <div style={{ overflowX: "auto" }}> {}
         <table style={{ 
           width: "100%", 
           marginTop: "10px", 
-          borderCollapse: "collapse" // Quan trọng: Giúp gộp các đường kẻ lại làm một
+          borderCollapse: "collapse" 
         }}>
           <thead>
             <tr style={{ backgroundColor: "#0e0c0c" }}>
